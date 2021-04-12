@@ -5,3 +5,6 @@
  */
 
 // You can delete this file if you're not using it
+import "./src/css/material_icons.css"
+import "@fontsource/roboto"
+import "./src/scss/global.scss"
