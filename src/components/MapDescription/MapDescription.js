@@ -2,6 +2,7 @@ import React from 'react'
 import { ReactComponent as Map } from '../../images/map.svg'
 import { makeStyles } from '@material-ui/core/styles'
 import { Grid, Typography } from '@material-ui/core'
+import i18n from './i18n'
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -68,9 +69,12 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 
-export default function MapDescription() {
+export default function MapDescription(props) {
 
+    const { lang } = props
     const classes = useStyles()
+    const title = i18n[lang]["title"]
+    const points = i18n[lang]["points"]
 
     return (
         <Grid container className={classes.root} id="app-map">
@@ -80,27 +84,27 @@ export default function MapDescription() {
             <Grid item sm={12} md={6} className={classes.descBox2} alignItems="center" justify="center">
                 <div>
                     <Typography className={classes.mapTitle} variant="h3" color="primary">
-                        Tattooists Map
+                        {title}
                     </Typography>
                     <ul>
                         <li className={classes.listPoint}>
                             <Typography className={classes.mapDesc} variant="h5" component="h4" color="primary">
-                                Check what tattooists are in your zone.
+                                {points[0]}
                             </Typography>
                         </li>
                         <li className={classes.listPoint}>
                             <Typography className={classes.mapDesc} variant="h5" component="h4" color="primary">
-                                Look at the tattooer's designs.
+                                {points[1]}
                             </Typography>
                         </li>
                         <li className={classes.listPoint}>
                             <Typography className={classes.mapDesc} variant="h5" component="h4" color="primary">
-                                Open the tattoo studio address on Google Maps.
+                                {points[2]}
                             </Typography>
                         </li>
                         <li className={classes.listPoint}>
                             <Typography className={classes.mapDesc} variant="h5" component="h4" color="primary">
-                                Promote your studio if you are a Tattoo Artist.
+                                {points[3]}
                             </Typography>
                         </li>
                     </ul>

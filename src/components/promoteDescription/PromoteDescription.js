@@ -2,6 +2,7 @@ import React from 'react'
 import { ReactComponent as TattooMachine } from '../../images/tattoo_machine.svg'
 import { makeStyles } from '@material-ui/core/styles'
 import { Grid, Typography } from '@material-ui/core'
+import i18n from './i18n'
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -69,9 +70,14 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 
-export default function PromoteDescription() {
+export default function PromoteDescription(props) {
 
+    const { lang } = props
     const classes = useStyles()
+    const title = i18n[lang]["title"]
+    const outro1 = i18n[lang]["outro1"]
+    const outro2 = i18n[lang]["outro2"]
+    const points = i18n[lang]["points"]
 
     return (
         <Grid container className={classes.root} id="app-promotion">
@@ -81,25 +87,30 @@ export default function PromoteDescription() {
             <Grid item sm={12} md={6} className={classes.descBox2} alignItems="center" justify="center">
                 <div>
                     <Typography className={classes.mapTitle} variant="h3" color="textPrimary">
-                        Promote Your Art
+                        {title}
                     </Typography>
                     <Typography className={classes.mapDesc} variant="h5" component="h4" color="textPrimary">
-                        For more information email: <br /> <span style={{fontWeight: "bold"}}>palmsintelligence@gmail.com</span><br /><br /> We will ask you for: 
+                       {outro1} <br /> <span style={{fontWeight: "bold"}}>palmsintelligence@gmail.com</span><br /><br /> {outro2} 
                     </Typography>
                     <ul>
                         <li className={classes.listPoint}>
                             <Typography className={classes.mapDesc} variant="h5" component="h4" color="textPrimary">
-                                Your Instagram profile, the users will contact you there.
+                                {points[0]}
                             </Typography>
                         </li>
                         <li className={classes.listPoint}>
                             <Typography className={classes.mapDesc} variant="h5" component="h4" color="textPrimary">
-                                Tattoo studio name and address to put it in the map.
+                                {points[1]}
                             </Typography>
                         </li>
                         <li className={classes.listPoint}>
                             <Typography className={classes.mapDesc} variant="h5" component="h4" color="textPrimary">
-                                Tattoo designs to add to our collection.
+                                {points[2]}
+                            </Typography>
+                        </li>
+                        <li className={classes.listPoint}>
+                            <Typography className={classes.mapDesc} variant="h5" component="h4" color="textPrimary">
+                                {points[3]}
                             </Typography>
                         </li>
                     </ul>

@@ -1,89 +1,81 @@
-/**
- * SEO component that queries for data with
- *  Gatsby's useStaticQuery React hook
- *
- * See: https://www.gatsbyjs.com/docs/use-static-query/
- */
-
-import * as React from "react"
-import PropTypes from "prop-types"
+import React from "react"
 import { Helmet } from "react-helmet"
-import { useStaticQuery, graphql } from "gatsby"
 
-function SEO({ description, lang, meta, title }) {
-  const { site } = useStaticQuery(
-    graphql`
-      query {
-        site {
-          siteMetadata {
-            title
-            description
-            author
-          }
-        }
-      }
-    `
-  )
+const en_MetaData = {
+  'title': 'Tattoo Discovery | Get inspired with +3000 tattoo designs 📱😍✅',
+  'description':'🥇 A social network of tattoos. Find the best of all!',
+  'url':'https://tattoodiscovery.app/'
+};
 
-  const metaDescription = description || site.siteMetadata.description
-  const defaultTitle = site.siteMetadata?.title
+const es_MetaData = {
+  'title': 'Tattoo Discovery | Inspírate con +3000 diseños de tatuaje 📱😍✅',
+  'description':'🥇 Una red social de tatuajes. Encuentra el mejor de todos!',
+  'url':'https://tattoodiscovery.app/es/'
+};
+
+const rich_snippet = {
+                       "@context": "https://schema.org",
+                       "@type": "SoftwareApplication",
+                       "name": "Tattoo Discovery",
+                       "operatingSystem": "ANDROID",
+                       "applicationCategory": "Social",
+                       "aggregateRating": {
+                         "@type": "AggregateRating",
+                         "ratingValue": "4.556",
+                         "ratingCount": "9"
+                       },
+                       "offers": {
+                         "@type": "Offer",
+                         "price": "0",
+                         "seller": {
+                          "@type": "Organization",
+                          "name": "Palms Intelligence"
+                          }
+                       }
+                     }
+
+
+
+function SEO(props) {
+  
+  const { lang } = props
+  var metaData
+
+  if(lang === "es") {
+    metaData = es_MetaData;
+  }
+  else {
+    metaData = en_MetaData;
+  }
 
   return (
-    <Helmet
-      htmlAttributes={{
-        lang,
-      }}
-      title={title}
-      titleTemplate={defaultTitle ? `%s | ${defaultTitle}` : null}
-      meta={[
-        {
-          name: `description`,
-          content: metaDescription,
-        },
-        {
-          property: `og:title`,
-          content: title,
-        },
-        {
-          property: `og:description`,
-          content: metaDescription,
-        },
-        {
-          property: `og:type`,
-          content: `website`,
-        },
-        {
-          name: `twitter:card`,
-          content: `summary`,
-        },
-        {
-          name: `twitter:creator`,
-          content: site.siteMetadata?.author || ``,
-        },
-        {
-          name: `twitter:title`,
-          content: title,
-        },
-        {
-          name: `twitter:description`,
-          content: metaDescription,
-        },
-      ].concat(meta)}
-    />
-  )
-}
-
-SEO.defaultProps = {
-  lang: `en`,
-  meta: [],
-  description: ``,
-}
-
-SEO.propTypes = {
-  description: PropTypes.string,
-  lang: PropTypes.string,
-  meta: PropTypes.arrayOf(PropTypes.object),
-  title: PropTypes.string.isRequired,
+    <Helmet>
+      <html lang={lang} />
+      <title>{metaData['title']}</title>
+      <link rel="alternate" hreflang="en"
+        href="https://tattoodiscovery.app/" />
+      <link rel="alternate" hreflang="es"
+        href="https://tattoodiscovery.app/es/" />
+      <link rel="icon" type="image/x-icon"
+        href="https://tattoodiscovery.app/icon.ico" />
+      <meta name="robots" content="index,follow" />
+      <meta name="og:title" content={metaData['title']} />
+      <meta name="description" content={metaData['description']} />
+      <meta name="og:description" content={metaData['description']} />
+      <meta property="og:type" content="website" />
+      <meta property="og:url" content={metaData['url']} />
+      <meta property="og:site_name" content={metaData['title']} />
+      <meta property="og:image" content="https://tattoodiscovery.app/icon-blank.png"/>
+      <meta property="og:image:secure_url" content="https://tattoodiscovery.app/icon-blank.png"/>
+      <meta property="twitter:card" content="summary_large_image"/>
+      <meta property="twitter:title" content={metaData['title']}/>
+      <meta property="twitter:description" content={metaData['description']}/>
+      <meta property="twitter:image" content={metaData['highLightImage']}/>
+      <meta property="lang" content={lang}/>
+      <meta name="theme-color" content="#ee77a7"/>
+      <script className='structured-data-list' type="application/ld+json">{JSON.stringify(rich_snippet)}</script>
+    </Helmet>
+  );
 }
 
 export default SEO

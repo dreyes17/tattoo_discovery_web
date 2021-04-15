@@ -3,6 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Grid, Hidden, Typography } from '@material-ui/core'
 import { StaticImage } from 'gatsby-plugin-image'
 import screenshotStyle from '../../static/screenshotImageInlineStyle'
+import i18n from './i18n'
 
 const SCREEN_HEIGHT = 400
 
@@ -48,9 +49,13 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 
-export default function Appdescription() {
+export default function Appdescription(props) {
 
+    const { lang } = props
     const classes = useStyles()
+    console.log(props)
+    console.log(lang)
+    const descriptions = i18n[lang]["descriptions"]
 
     return (
         <Grid container className={classes.root} id="app-desc">
@@ -58,10 +63,10 @@ export default function Appdescription() {
                 <StaticImage className={classes.screenshot} style={screenshotStyle} src={"../../images/screenshot_1.png"} height={SCREEN_HEIGHT} />
                 <div className={classes.screenshotInfo}>
                     <Typography variant="h4" component="h3" color="primary">
-                        +3000 Tattoo Designs
+                        {descriptions[0]["title"]}
                     </Typography>
                     <Typography className={classes.screenshotDesc} variant="h6" component="h4" color="primary">
-                        Tattoo Discovery is a huge collection of art from differents tattoo artists around the world.
+                        {descriptions[0]["description"]}
                     </Typography>
                 </div>
             </Grid>
@@ -69,10 +74,10 @@ export default function Appdescription() {
                 <StaticImage className={classes.screenshot} style={screenshotStyle} src={"../../images/screenshot_2.png"} height={SCREEN_HEIGHT} />
                 <div className={classes.screenshotInfo}>
                     <Typography variant="h4" component="h3" color="textPrimary">
-                        Artificial Intelligence
+                        {descriptions[1]["title"]}
                     </Typography>
                     <Typography className={classes.screenshotDesc} variant="h6" component="h4" color="textPrimary">
-                        Every tattoo is grouped with its most similar tattoos using cutting-edge artificial intelligence.
+                        {descriptions[1]["description"]}
                     </Typography>
                 </div>
             </Grid>
@@ -81,10 +86,10 @@ export default function Appdescription() {
                     <StaticImage className={classes.screenshot} style={screenshotStyle} src={"../../images/screenshot_3.png"} height={SCREEN_HEIGHT} />
                     <div className={classes.screenshotInfo}>
                         <Typography variant="h4" component="h3" color="textPrimary">
-                            Do Advanced Searches
+                            {descriptions[2]["title"]}
                         </Typography>
                         <Typography className={classes.screenshotDesc} variant="h6" component="h4" color="textPrimary">
-                            Look for the most liked tattoo by the community, among other exciting options.
+                            {descriptions[2]["description"]}
                         </Typography>
                     </div>
                 </Grid>
@@ -93,10 +98,10 @@ export default function Appdescription() {
                 <StaticImage className={classes.screenshot} style={screenshotStyle} src={"../../images/screenshot_4.png"} height={SCREEN_HEIGHT} />
                 <div className={classes.screenshotInfo}>
                     <Typography variant="h4" component="h3" color="primary">
-                        Tattoo Discovery Profile
+                        {descriptions[3]["title"]}
                     </Typography>
                     <Typography className={classes.screenshotDesc} variant="h6" component="h4" color="primary">
-                        Recover your liked and commented tattoos and upload your own designs.
+                        {descriptions[3]["description"]}
                     </Typography>
                 </div>
             </Grid>
@@ -105,10 +110,10 @@ export default function Appdescription() {
                 <StaticImage className={classes.screenshot} style={screenshotStyle} src={"../../images/screenshot_3.png"} height={SCREEN_HEIGHT} />
                     <div className={classes.screenshotInfo}>
                         <Typography variant="h4" component="h3" color="textPrimary">
-                            Do Advanced Searches
+                            {descriptions[2]["title"]}
                         </Typography>
                         <Typography className={classes.screenshotDesc} variant="h6" component="h4" color="textPrimary">
-                            Look for the most liked tattoo by the community, among other exciting options.
+                            {descriptions[2]["description"]}
                         </Typography>
                     </div>
                 </Grid>

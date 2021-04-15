@@ -6,11 +6,11 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import { Button } from 'gatsby-theme-material-ui'
 import { StaticImage } from 'gatsby-plugin-image'
-import infos from '../../static/infos'
+import i18n from './i18n'
 import Typography from '@material-ui/core/Typography';
 import "@fontsource/lily-script-one"
 import './ImageCard.scss'
-import { Collapse, Box } from '@material-ui/core';
+import { Box } from '@material-ui/core';
 import screenshotStyle from '../../static/screenshotImageInlineStyle'
 import { Link as Scroll } from "react-scroll"
 
@@ -59,12 +59,14 @@ const useStyles = makeStyles({
   }
 });
 
-export default function ImageCard({ checked }) {
-  const classes = useStyles();
+export default function ImageCard(props) {
 
-  return (
-    <>
-        <Collapse in={checked} { ...(checked ? { timeout: 1000 } : {})}>
+    const { lang } = props
+    const classes = useStyles();
+    const infos = i18n[lang]["infos"]
+
+    return (
+        <>
             <Card className={classes.root}>
                 <CardMedia height={CARD_HEIGHT} className={classes.media}>
                     <StaticImage className={classes.screenshot} style={screenshotStyle} src={"../../images/screenshot_1.png"} alt={infos[1].title} height={CARD_HEIGHT} />
@@ -83,8 +85,6 @@ export default function ImageCard({ checked }) {
                     </Scroll>
                 </CardActions>
             </Card>
-        </Collapse>
-        <Collapse in={checked} { ...(checked ? { timeout: 1000 } : {})}>
             <Card className={classes.root}>
                 <CardMedia height={CARD_HEIGHT} className={classes.media}>
                     <Box 
@@ -119,8 +119,6 @@ export default function ImageCard({ checked }) {
                     </Scroll>
                 </CardActions>
             </Card>
-        </Collapse>
-        <Collapse in={checked} { ...(checked ? { timeout: 1000 } : {})}>
             <Card className={classes.root}>
                 <CardMedia height={CARD_HEIGHT} className={classes.media}>
                     <StaticImage className={classes.screenshot} style={screenshotStyle} src={"../../images/screenshot_5.png"} alt={infos[1].title} height={CARD_HEIGHT} />
@@ -139,7 +137,6 @@ export default function ImageCard({ checked }) {
                     </Scroll>
                 </CardActions>
             </Card>
-        </Collapse>
-    </>
-  );
+        </>
+    );
 }

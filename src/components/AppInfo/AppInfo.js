@@ -1,7 +1,6 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 import ImageCard from '../ImageCard'
-import useWindowPosition from '../../hooks/useWindowPosition'
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -16,13 +15,15 @@ const useStyles = makeStyles((theme) => ({
     }
 }))
 
-export default function AppInfo() {
+export default function AppInfo(props) {
+
+    const { lang } = props
+
     const classes = useStyles()
-    const checked = useWindowPosition('header');
 
     return (
         <div className={classes.root} id="app-info">
-            <ImageCard checked={checked} />
+            <ImageCard lang={lang} />
         </div>
     )
 }

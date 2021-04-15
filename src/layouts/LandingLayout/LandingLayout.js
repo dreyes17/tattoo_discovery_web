@@ -6,12 +6,12 @@ import './LandingLayout.scss'
 
 const LandingLayout = (props) => {
 
-    const { children } = props
+    const { lang, children } = props
 
     return (
         <div>
             <CssBaseline />
-            <Navbar />
+            <Navbar lang={lang}/>
             {children}
         </div>
     )
