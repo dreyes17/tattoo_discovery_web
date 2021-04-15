@@ -1,11 +1,11 @@
 import * as React from "react"
-import LandingLayout from "../layouts/LandingLayout";
-import Header from "../components/Header";
-import AppInfo from "../components/AppInfo"
-import AppDescription from "../components/AppDescription";
-import MapDescription from "../components/MapDescription/MapDescription";
-import PromoteDescription from "../components/promoteDescription";
-import Footer from "../components/Footer";
+import LandingLayout from "../layouts/LandingLayout/index";
+import Header from "../components/Header/index";
+import AppInfo from "../components/AppInfo/index"
+import AppDescription from "../components/AppDescription/index";
+import MapDescription from "../components/MapDescription/index";
+import PromoteDescription from "../components/PromoteDescription/index";
+import Footer from "../components/Footer/index";
 import Seo from "../components/seo"
 import ReactGa from 'react-ga';
 

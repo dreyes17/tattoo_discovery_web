@@ -2,7 +2,7 @@ import React from 'react';
 import ReactMarkdown from 'react-markdown'
 import gfm from 'remark-gfm'
 import { makeStyles } from '@material-ui/styles';
-import LandingLayout from '../layouts/LandingLayout'
+import LandingLayout from '../layouts/LandingLayout/index'
 import '@fontsource/roboto'
 
 const styles = makeStyles( {

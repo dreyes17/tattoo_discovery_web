@@ -1,6 +1,6 @@
 import { CssBaseline } from '@material-ui/core'
 import React from 'react'
-import Navbar from '../../components/Navbar'
+import Navbar from '../../components/Navbar/index'
 import './LandingLayout.scss'
 
 
